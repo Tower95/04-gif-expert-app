@@ -3,14 +3,15 @@ import ReactDOM from "react";
 
 import AddCategory from "./components/AddCategory";
 
-const GifExpertApp = ({ props }) => {
+const GifExpertApp = ( ) => {
 
   const [categories, setCategories] = useState(['Dragon Ball', 'Evangelion', 'Full Metal Alchimist']);
   const [input, setinput] = useState("");
 
+
   return (<>
     <h2>Gif Expert App</h2>
-    <AddCategory />
+    <AddCategory setCategories = {setCategories} />
     <hr />
     
     <ol>
