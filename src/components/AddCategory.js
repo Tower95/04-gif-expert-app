@@ -23,7 +23,6 @@ const AddCategory = ({ setCategories }) => {
 
   }
 
-  console.log(input);
   return (
     <form onSubmit={handleSubmit}>
 

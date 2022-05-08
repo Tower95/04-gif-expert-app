@@ -4,23 +4,22 @@ import ReactDOM from "react";
 import AddCategory from "./components/AddCategory";
 import { GifGrid } from "./components/GifGrid";
 
-const GifExpertApp = ( ) => {
+const GifExpertApp = () => {
 
   const [categories, setCategories] = useState(['Dragon Ball']);
-  const [input, setinput] = useState("");
 
 
   return (<>
     <h2>Gif Expert App</h2>
-    <AddCategory setCategories = {setCategories} />
+    <AddCategory setCategories={setCategories} />
     <hr />
-    
+
     <ol>
       {
         categories.map((category) => {
-          return <GifGrid 
-                  key={category}
-                  category={category}/>
+          return <GifGrid
+            key={category}
+            category={category} />
         })
       }
     </ol>
