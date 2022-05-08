@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 //we import PropTypes
 import PropTypes from 'prop-types';
 
-const AddCategory = ({setCategories}) => {
+const AddCategory = ({ setCategories }) => {
 
   const [input, setInput] = useState("");
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
 
-    if(input.trim().length > 2){
-    setCategories(categories => [input,...categories]);
-    setInput('');
+    event.preventDefault();
+
+    if (input.trim().length > 2) {
+
+      setCategories(categories => [input, ...categories]);
+
+      setInput('');
     }
 
   }
@@ -30,6 +33,7 @@ const AddCategory = ({setCategories}) => {
         value={input}
         onChange={handleInputChange}
       ></input>
+
     </form>
   );
 }
@@ -37,7 +41,7 @@ const AddCategory = ({setCategories}) => {
 //asign porpTypes to the component to handle props
 AddCategory.propTypes = {
   // mark setCategories as a prop type function and requires.
-  setCategories : PropTypes.func.isRequired
+  setCategories: PropTypes.func.isRequired
 }
 
 export default AddCategory
