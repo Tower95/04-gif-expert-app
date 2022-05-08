@@ -18,10 +18,10 @@ export const GifGrid = ({ category }) => {
     let url = `https://api.giphy.com/v1/gifs/search?q=${search}&limit=${limit}&api_key=${apy_key}`
     const resp = await fetch(url);
     let { data } = await resp.json();
-    const gifs = data.map(({title,id,images}) => {
+    const gifs = data.map(({ title, id, images }) => {
       return {
         id,
-        title ,
+        title,
         url: images.downsized_medium.url
       }
     })
@@ -29,14 +29,16 @@ export const GifGrid = ({ category }) => {
     setImages(gifs);
   }
 
-  return (
-    <div>
-      <h3>{category}</h3>
-        {images.map((img) => {
-          return <GifGridItem key={img.id} {...img}/>
-        })
-        }
+  return (<>
+    <h3>{category}</h3>
+    <div className='card-grid'>
+      {images.map((img) => {
+        return <GifGridItem key={img.id} {...img} />
+      })
+    }
     </div>
+    <hr />
+  </>
   );
 }
 
