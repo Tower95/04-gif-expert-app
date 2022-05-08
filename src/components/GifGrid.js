@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { isElementOfType } from 'react-dom/test-utils';
 import GifGridItem from './GifGridItem';
-import { getGif } from '../helpers/getGif';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
 export const GifGrid = ({ category }) => {
 
-  const [count, setCount] = useState(0);
-  const [images, setImages] = useState([]);
+  const { data: imgaes, loading } = useFetchGifs(category);
 
-  //useEffect indicate how many times the function will be execute 
-  useEffect(() => {
-    const gifs = getGif(category)
-    .then((setImages))
-  }, [category])
+  return (
+    <>
+      <h3>{category}</h3>
 
-  return (<>
-    <h3>{category}</h3>
-    <div className='card-grid'>
-      {images.map((img) => {
-        return <GifGridItem key={img.id} {...img} />
-      })
-      }
-    </div>
-    <hr />
-  </>
+      {loading && <p>Loading</p>}
+
+      <div className='card-grid'>
+        {
+          imgaes.map(img => (
+            <GifGridItem
+              key={img.id}
+              {...img} />
+          ))
+        }
+      </div>
+
+      <hr />
+
+    </>
   );
 }
 
