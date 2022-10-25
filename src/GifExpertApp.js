@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react";
 
 import AddCategory from "./components/AddCategory";
 import { GifGrid } from "./components/GifGrid";
